@@ -1,22 +1,19 @@
-  <form class="mx-8 rounded -mt-8 bg-white shadow-lg pl-4 py-2.5" >
+  <form class="mx-8 rounded -mt-8 bg-white shadow-lg pl-4 py-2.5"  (ngSubmit)="onFormSubmit(form)" #form="ngForm">
     <h2 class="font-semibold text-md">New Todo</h2>
     <div class="mt-4 flex gap-3">
-      <input type="text" class="border-2 border-gray-200 shadow-sm" placeholder="Type todo text here">
-      <button type="button" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold p-1 rounded px-2 active:opacity-80">+ Add</button>
+      <input ngModel name="text" type="text" class="border-2 border-gray-200 shadow-sm" placeholder="Type todo text here" required minlength="2" #todoTextField="ngModel">
+      <button type="submit" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold p-1 rounded px-2 active:opacity-80">+ Add</button>
+    </div>
+    <div *ngIf="todoTextField.invalid && showValidationErrors">
+      <p class="text-red-600 text-xs" *ngIf="todoTextField.errors?.['required']">Please enter the text of your todo</p>
+      <p class="text-red-600 text-xs" *ngIf="todoTextField.errors?.['minlength']">Text must be at least 2 characters</p>
     </div>
   </form>
 
   <section>
     <ul class="mx-6 flex flex-col mt-10">
-      <li class="flex gap-2 items-center border-b-1 border-black">
-        <div>
-          <div class="bg-green-500 rounded-full w-8 h-8 flex justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 p-1 text-white">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-          </div>  
-        </div>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni, doloribus.</p>
+      <li class=" border-b-2 border-gray-300 mb-6 " *ngFor="let todo of todos">
+        <app-todo-item [todo]="todo"></app-todo-item>
       </li>
     </ul>
   </section>
