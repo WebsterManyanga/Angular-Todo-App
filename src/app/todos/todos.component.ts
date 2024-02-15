@@ -37,4 +37,13 @@ export class TodosComponent implements OnInit {
     this.showValidationErrors = false;
     form.reset();
   }
+
+
+  toggleCompleted(todo: Todo ) {
+    todo.completed = !todo.completed;
+  }
+
+  editTodo(todo: Todo) {
+    this.dataService.updateTodo(this.todos.indexOf(todo), todo);
+  }
 }

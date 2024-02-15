@@ -12,8 +12,6 @@
 
   <section>
     <ul class="mx-6 flex flex-col mt-10">
-      <li class=" border-b-2 border-gray-300 mb-6 " *ngFor="let todo of todos">
-        <app-todo-item [todo]="todo"></app-todo-item>
-      </li>
+        <app-todo-item *ngFor="let todo of todos" [todo]="todo" (todoClicked)="toggleCompleted(todo)" (editClicked)="editTodo(todo)" ></app-todo-item>
     </ul>
   </section>
