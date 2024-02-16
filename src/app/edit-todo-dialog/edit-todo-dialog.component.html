@@ -1,8 +1,10 @@
-<h1>Edit Todo</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title>Edit Todo</h1>
+<mat-dialog-content>
   <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
-    <input type="text" name="" id="" placeholder="type todo text">
-    <button type="submit">Save</button>
-    <button type="button">Cancel</button>
+    <input ngModel type="text" name="editText" id="" placeholder="type todo text">
+    <mat-dialog-actions align="end">
+      <button type="submit" mat-dialog-close mat-button >Save</button>
+      <button type="button" mat-dialog-close mat-button>Cancel</button>  
+    </mat-dialog-actions>
   </form>
-</div>
+</mat-dialog-content>
