@@ -1,10 +1,40 @@
 <h1 mat-dialog-title>Edit Todo</h1>
 <mat-dialog-content>
   <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
-    <input ngModel type="text" name="editText" id="" placeholder="type todo text">
-    <mat-dialog-actions align="end">
-      <button type="submit" mat-dialog-close mat-button >Save</button>
-      <button type="button" mat-dialog-close mat-button>Cancel</button>  
-    </mat-dialog-actions>
+    <input
+      ngModel
+      type="text"
+      name="editText"
+      id=""
+      placeholder="Type todo text"
+      class="border-2 border-blue-300 shadow-sm outline-none p-2 text-black"
+      minlength="2"
+      required
+      #editedText="ngModel"
+    />
+    <div *ngIf="editedText.invalid && showValidationErrors" class="pt-2">
+      <p class="text-red-600 text-xs" *ngIf="editedText.errors?.['required']">
+        * Please enter the text of your todo
+      </p>
+      <p class="text-red-600 text-xs" *ngIf="editedText.errors?.['minlength']">
+        * Text must be at least 2 characters
+      </p>
+    </div>
+
+    <mat-dialog-actions align="end" class="flex gap-2">
+      <button
+        type="submit"
+        class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-2 rounded px-4 active:opacity-80"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        mat-dialog-close
+        class="bg-gradient-to-r from-rose-400 to-red-500 text-white p-2 rounded px-4 active:opacity-80"
+      >
+        Cancel
+      </button>
+      </mat-dialog-actions>
   </form>
 </mat-dialog-content>
