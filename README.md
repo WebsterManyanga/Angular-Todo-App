@@ -1,6 +1,6 @@
 # Todo App Readme
 
-[Visit Site](https://webstermanyanga.github.io/Angular-Todo-App/)
+[Visit Site](https://webstermanyanga.github.io/NgBuild-Todo-App/)
 
 This Todo App is a simple yet effective task management application built using Angular and Tailwind CSS. With this application, users can create, update, delete, and mark tasks as completed. It provides a seamless user experience and an intuitive interface for managing daily tasks and activities.
 
